@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <p class="display-4">
+        A share of {{ name }} ({{ symbol }}) costs ${{ "{:.2f}".format(price) }}.
+    </p>
+    <a class="btn btn-outline-secondary" role="button" href="/quote">
+        Search for more stocks
+    </a>
+    <br>
+{% endblock %}

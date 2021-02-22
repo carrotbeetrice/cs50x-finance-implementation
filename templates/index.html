@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <p class="display-4">
+        Stocks owned
+    </p>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">
+                    Symbol
+                </th>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    Shares
+                </th>
+                <th scope="col">
+                    Price ($)
+                </th>
+                <th scope="col">
+                    TOTAL ($)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in shares_table %}
+            <tr>
+                <td>
+                    {{ row["symbol"] }}
+                </td>
+                <td>
+                    {{ row["name"] }}
+                </td>
+                <td>
+                    {{ row["shares"] }}
+                </td>
+                <td>
+                    {{ "{:.2f}".format(row["stock_price"]) }}
+                </td>
+                <td>
+                    {{ "{:.2f}".format(row["total"]) }}
+                </td>
+            </tr>
+            {% endfor %}
+            <!--Cash row-->
+            <tr>
+                <td>
+                    CASH
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    {{ "{:.2f}".format(user_cash) }}
+                </td>
+            </tr>
+            <!--Total cash row-->
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <b>
+                        {{ "{:.2f}".format(user_total) }}
+                    </b>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

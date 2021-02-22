@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <!--Possible improvement: Implement some JS to check for:
+        - Blank username input
+        - If password fulfills requirements
+        - If passwords match (optional)
+
+        Also a security question setup
+    -->
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" id="username-input"
+            name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password" id="password-input">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Password (again)" type="password" id="confirmation-input">
+        </div>
+        <div class="container text-left w-50 mx-auto">
+            <div class="text-muted media" id="username-check">
+                <div class="media-body">
+                    Your username must contain only alphanumeric (letters and numbers) characters.
+                </div>
+                <img src="/static/images/foursquare-check-in.png" class="align-self-center" style="height:20px;width:20px;display:none;">
+            </div>
+            <br>
+            <div class="text-muted">
+                Your password must
+                <ul>
+                    <li>
+                        <div class="text-muted media" id="length-check">
+                            <div class="media-body">
+                                be at least 8 characters long
+                            </div>
+                            <img src="/static/images/foursquare-check-in.png" class="align-self-center" style="height:20px;width:20px;display:none;">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="text-muted media" id="alnum-check">
+                            <div class="media-body">
+                                contain only alphanumeric characters
+                            </div>
+                            <img src="/static/images/foursquare-check-in.png" class="align-self-center" style="height:20px;width:20px;display:none;">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <button class="btn btn-primary" id="register-btn" type="submit" disabled>Register</button>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript"
+             src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}
